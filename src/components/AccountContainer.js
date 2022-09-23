@@ -6,6 +6,7 @@ import AddTransactionForm from "./AddTransactionForm";
 function AccountContainer() {
   const apiHost = 'http://localhost:8001'
   const [transactions, setTransactions] = useState("")
+  const [search, setSearch] = useState("")
   const [newTransaction, setNewTransaction] = useState("")
 
   useEffect(() =>{
@@ -36,9 +37,9 @@ function AccountContainer() {
 
   return (
     <div>
-      <Search />
+      <Search search={search} setSearch={setSearch}/>
       <AddTransactionForm handleAddTransaction={handleAddTransactionForm}/>
-      <TransactionsList transactions={transactions}/>
+      <TransactionsList transactions={transactions} search={search}/>
     </div>
   );
 }

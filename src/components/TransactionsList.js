@@ -1,11 +1,19 @@
 import Transaction from "./Transaction";
 
-function TransactionsList({transactions}) {
+function TransactionsList({transactions, search}) {
 
-  let transactionList = "Loading..."
+  let transactionList = "Loading..." // will show this if data being fetched hasn't returned
+
   if(transactions){
-    console.log("from transaction list: ", transactions)
-    transactionList = transactions.map(transaction => {
+    // filters displayed list on description and category
+    const filteredTransactions = transactions.filter(transaction => {
+      return (
+        transaction.description.includes(search) ||
+        transaction.category.includes(search)
+      ) 
+    })
+
+    transactionList = filteredTransactions.map(transaction => {
       return <Transaction key={transaction.id} transaction={transaction}/>
     })
   }
