@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from "react";
 import {transactionDataApiHost as apiHost} from './apiHosts'
 
 function Transaction({transaction, setTransactions}) {
