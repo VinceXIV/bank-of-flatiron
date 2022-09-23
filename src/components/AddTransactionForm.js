@@ -16,6 +16,13 @@ function AddTransactionForm({handleAddTransaction}) {
   function handleSubmit(event){
     event.preventDefault()
     handleAddTransaction(formData)
+
+    setFormData({
+      date: "",
+      description: "",
+      category: "",
+      amount: ""
+    })
   }
 
   return (
