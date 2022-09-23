@@ -13,16 +13,53 @@ function AddTransactionForm({handleAddTransaction}) {
     console.log(formData)
   }
 
+  function validateForm(){
+    const formDetails = {
+      containsEmptyInput:false,
+      hasInvalidDate:true,
+      isInvalid:false
+    }
+
+    //form should not contain empty field
+    for(const inputData in formData){
+      if(!formData[inputData]){
+        formDetails.containsEmptyInput = true
+        break
+      }
+    }
+
+    //date should be between 2000 and today
+    const allowablePastDate = (new Date("2019")).getTime()
+    const today = (new Date()).getTime()
+    const formDataDate = (new Date(formData.date)).getTime()
+    formDetails.hasInvalidDate = formDataDate < allowablePastDate ? true : formDataDate > today ? true : false
+
+    //general state of validity of the form
+    formDetails.isInvalid = formDetails.containsEmptyInput || formDetails.hasInvalidDate || false
+
+    return formDetails;
+  }
+
   function handleSubmit(event){
     event.preventDefault()
-    handleAddTransaction(formData)
+    const formInput = validateForm()
 
-    setFormData({
-      date: "",
-      description: "",
-      category: "",
-      amount: ""
-    })
+    if(formInput.containsEmptyInput){
+      alert("please fill all inputs with values")
+    }else if(formInput.hasInvalidDate){
+      alert("Please enter valid date\nYear is expected to be between 2019 and today")
+    }else if(!formInput.isInvalid){
+      handleAddTransaction(formData)
+  
+      setFormData({
+        date: "",
+        description: "",
+        category: "",
+        amount: ""
+      })
+
+      alert('Input submitted successfully')
+    } 
   }
 
   return (
