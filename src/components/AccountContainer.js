@@ -2,9 +2,9 @@ import React, {useState, useEffect} from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
+import {transactionDataApiHost as apiHost} from './apiHosts'
 
 function AccountContainer() {
-  const apiHost = 'http://localhost:8001'
   const [transactions, setTransactions] = useState("")
   const [search, setSearch] = useState("")
   const [newTransaction, setNewTransaction] = useState("")
