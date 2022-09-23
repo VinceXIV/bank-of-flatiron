@@ -39,7 +39,7 @@ function AccountContainer() {
     <div>
       <Search search={search} setSearch={setSearch}/>
       <AddTransactionForm handleAddTransaction={handleAddTransactionForm}/>
-      <TransactionsList transactions={transactions} search={search}/>
+      <TransactionsList transactions={transactions} setTransactions={setTransactions} search={search}/>
     </div>
   );
 }
