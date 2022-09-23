@@ -10,7 +10,6 @@ function AddTransactionForm({handleAddTransaction}) {
 
   function updateFormData(event){
     setFormData({...formData, [event.target.name]: event.target.value})
-    console.log(formData)
   }
 
   function validateForm(){
@@ -58,7 +57,7 @@ function AddTransactionForm({handleAddTransaction}) {
         amount: ""
       })
 
-      alert('Input submitted successfully')
+      alert('Data submitted successfully')
     } 
   }
 

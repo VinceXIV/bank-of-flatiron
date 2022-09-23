@@ -8,9 +8,7 @@ function TransactionsList({transactions, search}) {
     // filters displayed list on description and category
     const filteredTransactions = transactions.filter(transaction => {
       return (
-        transaction.description.toLowerCase().includes(search.toLowerCase()) ||
-        transaction.category.toLowerCase().includes(search.toLowerCase())
-      ) 
+        transaction.description.toLowerCase().includes(search.toLowerCase())) 
     })
 
     transactionList = filteredTransactions.map(transaction => {
