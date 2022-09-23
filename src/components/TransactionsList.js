@@ -27,7 +27,7 @@ function TransactionsList({transactions, setTransactions, search}) {
     })
 
     transactionList = filteredTransactions.map(transaction => {
-      return <Transaction key={transaction.id} transaction={transaction}/>
+      return <Transaction key={transaction.id} transaction={transaction} setTransactions={setTransactions}/>
     })
   }
 
